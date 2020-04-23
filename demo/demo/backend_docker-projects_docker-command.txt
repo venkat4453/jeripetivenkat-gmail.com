@@ -1,0 +1,55 @@
+Docker commands: 
+1) docker --version (or) docker version (it gives server and client version)
+2) docker info
+3) docker pull hello-world
+4) docker run hello-world
+5) docker ps (or) docker container ls
+6) docker build -t validations . (builds docker image from dockerfile with name validations)
+7) docker run -p 8080:8080 validations
+8) docker login
+9) docker tag image username/repository:tag (docker tag validations gopuni/validations:1.0)
+10) docker push gopuni/validations:1.0
+11) docker rmi gopuni/validations"1.0
+12) docker swarm init
+13) docker stack deploy -c docker-compose.yml validations
+
+docker images: 
+
+1) docker image pull {image_name} (or) docker pull {image_name}
+
+2) docker images (or) docker image ls
+
+3) docker image rm ${IMAGE_ID}
+
+4) docker image prune (Removes dangling images)
+
+5) docker image rm $(docker image ls -aq) (removes all images)
+
+docker containers: 
+
+1) docker container ls (or) docker ps (List out the running docker containers)
+
+2) docker container ls -a (or) docker ps -a (List out the all containers)
+
+Removing unused images: 
+
+1) docker image prune
+
+2) docker image rm $(docker image ls -aq)
+
+3) docker container stop $(docker container ls -q) (stops the all runing containers)
+
+4) docker container exec -it ${CID} bash
+
+
+Docker volumes: 
+***************
+
+1) docker volume ls (provides the list of volumes avalible)
+2) docker volume create {volume-name} (creates the volume)
+3) docker inspect {volume-name} (Gives the volume details)
+4) docker run --name myJenkins1 -v {volume-name}:{path of data we want to save container location} -p 8080:8080  {image-name} (attaching volumes to container)
+
+docker run --name unimoni-mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+
+docker run --name unimoni-mysql -v unimoni_mysql:/var/lib/mysql  -e MYSQL_ROOT_PASSWORD=123456 -d mysql
